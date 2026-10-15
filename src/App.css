@@ -1,0 +1,13 @@
+/* App Container Styles */
+.malviyasphere-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-page);
+  overflow-x: hidden;
+  position: relative;
+}
+
+#main-content {
+  flex: 1 0 auto;
+}

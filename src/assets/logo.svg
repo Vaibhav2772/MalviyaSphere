@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <defs>
+    <linearGradient id="msGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Logo Background Box -->
+  <rect width="48" height="48" fill="url(#msGradient)" />
+  
+  <!-- MalviyaSphere Central Monogram & Orbits -->
+  <circle cx="24" cy="24" r="16" stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.35" />
+  <ellipse cx="24" cy="24" rx="16" ry="6.5" stroke="#FFFFFF" stroke-width="2.2" fill="none" transform="rotate(-30 24 24)" />
+  
+  <!-- Core Student Hub Nodes -->
+  <circle cx="24" cy="24" r="4.5" fill="#FFFFFF" />
+  <circle cx="35" cy="18" r="2.5" fill="#38BDF8" />
+  <circle cx="13" cy="30" r="2.5" fill="#A7F3D0" />
+</svg>
