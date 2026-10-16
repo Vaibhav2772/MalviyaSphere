@@ -139,6 +139,103 @@
   transform: translateX(3px);
 }
 
+/* Logged-In User Badge & Actions */
+.navbar-auth-logged-in {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.navbar-user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.85rem;
+  background-color: var(--color-primary-light);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.user-chip-icon {
+  color: var(--color-primary);
+}
+
+.user-chip-name {
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-navbar-logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-body);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 0.85rem;
+  border-radius: 0;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-navbar-logout:hover {
+  color: var(--color-accent-rose);
+  border-color: var(--color-accent-rose);
+  background-color: var(--color-accent-rose-light);
+}
+
+.mobile-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background-color: var(--color-primary-light);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: 0;
+}
+
+.mobile-user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.mobile-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-user-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.mobile-user-email {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.mobile-btn-logout {
+  width: 100%;
+  justify-content: center;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+}
+
 /* Mobile Toggle */
 .navbar-mobile-toggle {
   display: none;

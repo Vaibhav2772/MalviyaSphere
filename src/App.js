@@ -4,22 +4,56 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import InterestSection from './components/InterestSection';
 import Footer from './components/Footer';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Logout from './pages/Logout';
+import { RouterProvider, useRouter } from './context/RouterContext';
+import { AuthProvider } from './context/AuthContext';
 
-function App() {
+function AppContent() {
+  const { currentPath } = useRouter();
+
+  // Route selector
+  const renderPage = () => {
+    switch (currentPath) {
+      case '/signup':
+        return <Signup />;
+      case '/login':
+        return <Login />;
+      case '/logout':
+        return <Logout />;
+      case '/':
+      default:
+        return (
+          <main id="main-content">
+            <Hero />
+            <InterestSection />
+          </main>
+        );
+    }
+  };
+
   return (
     <div className="malviyasphere-app">
       {/* Top Navigation Bar */}
       <Navbar />
 
-      {/* Main Landing Page Content */}
-      <main id="main-content">
-        <Hero />
-        <InterestSection />
-      </main>
+      {/* Dynamic Route Content */}
+      {renderPage()}
 
       {/* Page Footer */}
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <RouterProvider>
+        <AppContent />
+      </RouterProvider>
+    </AuthProvider>
   );
 }
 

@@ -1,0 +1,236 @@
+/* Signup Page Styles */
+.auth-form-root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.15rem;
+}
+
+.input-field-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1.5px solid var(--color-border);
+  border-radius: 0;
+  transition: var(--transition-fast);
+}
+
+.input-field-wrapper:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-glow);
+}
+
+.has-error .input-field-wrapper {
+  border-color: var(--color-accent-rose);
+  background-color: var(--color-accent-rose-light);
+}
+
+.native-input {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  outline: none;
+}
+
+.native-input::placeholder {
+  color: #94a3b8;
+}
+
+.signup-verification-section {
+  margin-top: 0.25rem;
+  margin-bottom: 0.85rem;
+}
+
+.section-sub-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.45rem;
+}
+
+/* Privacy & College Notice */
+.college-privacy-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  background-color: var(--color-primary-light);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: 0;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #312e81;
+}
+
+.notice-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Alert banners */
+.auth-general-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.alert-error {
+  background-color: var(--color-accent-rose-light);
+  color: #9f1239;
+  border: 1px solid #fecdd3;
+}
+
+/* Submit and Action Buttons */
+.auth-submit-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #4338ca 100%);
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--color-primary-glow);
+  transition: var(--transition-fast);
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
+  transform: translateY(-1px);
+}
+
+.auth-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.auth-secondary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  background-color: #ffffff;
+  border: 1.5px solid var(--color-border);
+  border-radius: 0;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.auth-secondary-btn:hover {
+  background-color: var(--color-bg-page);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Footer links */
+.auth-footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.auth-redirect-text {
+  font-size: 0.9rem;
+  color: var(--color-text-body);
+}
+
+.auth-inline-link {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.auth-inline-link:hover {
+  color: var(--color-primary-dark);
+}
+
+.auth-return-link {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  transition: var(--transition-fast);
+}
+
+.auth-return-link:hover {
+  color: var(--color-primary);
+}
+
+/* Success state */
+.signup-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.success-icon-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background-color: var(--color-accent-emerald-light);
+  color: var(--color-accent-emerald);
+  border: 1px solid #a7f3d0;
+  border-radius: 0;
+  margin-bottom: 1.25rem;
+}
+
+.success-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-bottom: 0.65rem;
+}
+
+.success-message {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-body);
+  margin-bottom: 1.5rem;
+  max-width: 480px;
+}
+
+.success-actions-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 1rem;
+}
