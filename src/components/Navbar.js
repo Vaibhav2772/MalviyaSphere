@@ -104,10 +104,27 @@ function Navbar() {
         <div className="navbar-actions">
           {isAuthenticated ? (
             <div className="navbar-auth-logged-in">
-              <div className="navbar-user-chip" title={user?.college || 'Logged In'}>
+              <button
+                type="button"
+                className="navbar-user-chip"
+                title={user?.hasCompletedOnboarding ? 'View Your Sphere Profile' : (user?.college || 'Logged In')}
+                onClick={() => navigate('/onboarding')}
+                style={{ cursor: 'pointer' }}
+              >
                 <User size={15} className="user-chip-icon" />
                 <span className="user-chip-name">{user?.name || 'Student'}</span>
-              </div>
+              </button>
+              {!user?.hasCompletedOnboarding && (
+                <button
+                  type="button"
+                  className="btn-navbar-onboarding"
+                  onClick={() => navigate('/onboarding')}
+                  aria-label="Complete Profile Onboarding"
+                >
+                  <span>Complete Onboarding</span>
+                  <ArrowRight size={14} />
+                </button>
+              )}
               <button 
                 type="button" 
                 className="btn-navbar-logout"
@@ -185,7 +202,16 @@ function Navbar() {
         <div className="mobile-actions">
           {isAuthenticated ? (
             <>
-              <div className="mobile-user-profile">
+              <div 
+                className="mobile-user-profile"
+                onClick={() => {
+                  closeMobileMenu();
+                  navigate('/onboarding');
+                }}
+                role="button"
+                tabIndex={0}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="mobile-user-avatar">
                   <User size={18} />
                 </div>
@@ -194,6 +220,19 @@ function Navbar() {
                   <span className="mobile-user-email">{user?.email}</span>
                 </div>
               </div>
+              {!user?.hasCompletedOnboarding && (
+                <button
+                  type="button"
+                  className="btn-navbar-onboarding mobile-btn-onboarding"
+                  onClick={() => {
+                    closeMobileMenu();
+                    navigate('/onboarding');
+                  }}
+                >
+                  <span>Complete Onboarding</span>
+                  <ArrowRight size={15} />
+                </button>
+              )}
               <button 
                 type="button" 
                 className="btn-navbar-logout mobile-btn-logout"

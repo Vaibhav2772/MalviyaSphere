@@ -3,8 +3,15 @@ import React, { createContext, useContext, useState } from 'react';
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  // Current authenticated mock user
-  const [user, setUser] = useState(null);
+  // Current authenticated mock user with draft / profile state
+  const [user, setUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('malviyasphere_mock_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+      return null;
+    }
+  });
 
   // College email verification status flow: 'not_verified' | 'pending' | 'verified' | 'failed'
   const [verificationStatus, setVerificationStatus] = useState('not_verified');
@@ -26,28 +33,42 @@ export function AuthProvider({ children }) {
       throw new Error('Invalid email or password. Please verify your credentials and try again.');
     }
 
+    const normalizedEmail = email.trim().toLowerCase();
+
+    // Check if there is an existing stored profile for this email
+    let existingOnboarding = null;
+    try {
+      const stored = localStorage.getItem(`malviyasphere_profile_${normalizedEmail}`);
+      if (stored) existingOnboarding = JSON.parse(stored);
+    } catch (e) {}
+
     const mockUser = {
-      name: email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) || 'Campus Scholar',
-      email: email.trim().toLowerCase(),
+      name:
+        existingOnboarding?.fullName ||
+        normalizedEmail.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) ||
+        'Campus Scholar',
+      email: normalizedEmail,
       college: 'Madan Mohan Malaviya University of Technology, Gorakhpur',
       joinedAt: new Date().toLocaleDateString(),
+      hasCompletedOnboarding: !!existingOnboarding,
+      onboardingProfile: existingOnboarding,
     };
 
     setUser(mockUser);
     setLogoutMessage(null);
 
+    try {
+      localStorage.setItem('malviyasphere_mock_user', JSON.stringify(mockUser));
+    } catch (err) {}
+
     if (rememberMe) {
       try {
-        localStorage.setItem('malviyasphere_remembered_email', email.trim().toLowerCase());
-      } catch (err) {
-        // Ignore localStorage errors
-      }
+        localStorage.setItem('malviyasphere_remembered_email', normalizedEmail);
+      } catch (err) {}
     } else {
       try {
         localStorage.removeItem('malviyasphere_remembered_email');
-      } catch (err) {
-        // Ignore localStorage errors
-      }
+      } catch (err) {}
     }
 
     return mockUser;
@@ -68,6 +89,8 @@ export function AuthProvider({ children }) {
       email: email.trim().toLowerCase(),
       college: college.trim(),
       joinedAt: new Date().toLocaleDateString(),
+      hasCompletedOnboarding: false,
+      onboardingProfile: null,
     };
 
     setUser(mockUser);
@@ -77,6 +100,10 @@ export function AuthProvider({ children }) {
       message: `Verification email would be sent to ${email.trim().toLowerCase()}. (Frontend simulation)`,
     });
     setLogoutMessage(null);
+
+    try {
+      localStorage.setItem('malviyasphere_mock_user', JSON.stringify(mockUser));
+    } catch (err) {}
 
     return mockUser;
   };
@@ -89,6 +116,59 @@ export function AuthProvider({ children }) {
     setVerificationStatus('not_verified');
     setVerificationFeedback(null);
     setLogoutMessage('You have been logged out successfully.');
+
+    try {
+      localStorage.removeItem('malviyasphere_mock_user');
+    } catch (err) {}
+  };
+
+  // Mark onboarding completed & store profile
+  const completeOnboarding = (profileData) => {
+    const updatedUser = {
+      ...(user || {
+        name: profileData.fullName || 'Campus Scholar',
+        email: 'student@mmmut.ac.in',
+        college: 'Madan Mohan Malaviya University of Technology, Gorakhpur',
+        joinedAt: new Date().toLocaleDateString(),
+      }),
+      name: profileData.fullName || user?.name || 'Campus Scholar',
+      hasCompletedOnboarding: true,
+      onboardingProfile: profileData,
+    };
+
+    setUser(updatedUser);
+
+    try {
+      localStorage.setItem('malviyasphere_mock_user', JSON.stringify(updatedUser));
+      if (updatedUser.email) {
+        localStorage.setItem(`malviyasphere_profile_${updatedUser.email}`, JSON.stringify(profileData));
+      }
+      localStorage.removeItem('malviyasphere_onboarding_draft');
+    } catch (err) {}
+
+    return updatedUser;
+  };
+
+  // Draft persistence helpers for onboarding flow
+  const saveOnboardingDraft = (draft) => {
+    try {
+      localStorage.setItem('malviyasphere_onboarding_draft', JSON.stringify(draft));
+    } catch (err) {}
+  };
+
+  const getOnboardingDraft = () => {
+    try {
+      const draft = localStorage.getItem('malviyasphere_onboarding_draft');
+      return draft ? JSON.parse(draft) : null;
+    } catch (err) {
+      return null;
+    }
+  };
+
+  const clearOnboardingDraft = () => {
+    try {
+      localStorage.removeItem('malviyasphere_onboarding_draft');
+    } catch (err) {}
   };
 
   // Simulated Resend Verification Email
@@ -159,6 +239,10 @@ export function AuthProvider({ children }) {
         login,
         signup,
         logout,
+        completeOnboarding,
+        saveOnboardingDraft,
+        getOnboardingDraft,
+        clearOnboardingDraft,
         resendVerificationEmail,
         setSimulatedStatus,
         getRememberedEmail,

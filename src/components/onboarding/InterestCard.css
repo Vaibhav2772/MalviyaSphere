@@ -1,0 +1,127 @@
+.onboarding-interest-card {
+  background-color: #ffffff;
+  border: 2px solid var(--color-border);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  user-select: none;
+  position: relative;
+  min-height: 160px;
+}
+
+.onboarding-interest-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.onboarding-interest-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Selected state */
+.onboarding-interest-card.is-selected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  box-shadow: 0 4px 14px var(--color-primary-glow);
+}
+
+.interest-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.interest-icon-badge {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Color classes matching existing brand */
+.color-blue {
+  background-color: var(--color-accent-blue-light);
+  color: var(--color-accent-blue);
+}
+
+.color-purple {
+  background-color: var(--color-accent-purple-light);
+  color: var(--color-accent-purple);
+}
+
+.color-indigo {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.color-emerald {
+  background-color: var(--color-accent-emerald-light);
+  color: var(--color-accent-emerald);
+}
+
+.color-amber {
+  background-color: var(--color-accent-amber-light);
+  color: var(--color-accent-amber);
+}
+
+.color-rose {
+  background-color: var(--color-accent-rose-light);
+  color: var(--color-accent-rose);
+}
+
+.selection-checkbox {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-border);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: var(--transition-fast);
+}
+
+.selection-checkbox.checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.interest-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: 0.4rem;
+}
+
+.interest-card-desc {
+  font-size: 0.84rem;
+  color: var(--color-text-body);
+  line-height: 1.45;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.interest-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.selection-status-hint {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.onboarding-interest-card.is-selected .selection-status-hint {
+  color: var(--color-primary);
+  font-weight: 700;
+}

@@ -145,7 +145,7 @@ function Signup() {
         college: formData.college,
       });
 
-      setSignupSuccess(true);
+      navigate('/onboarding');
     } catch (err) {
       setGeneralError(err.message || 'Failed to create account. Please try again.');
     } finally {

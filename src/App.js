@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
+import Onboarding from './pages/Onboarding';
 import { RouterProvider, useRouter } from './context/RouterContext';
 import { AuthProvider } from './context/AuthContext';
 
@@ -16,6 +17,8 @@ function AppContent() {
   // Route selector
   const renderPage = () => {
     switch (currentPath) {
+      case '/onboarding':
+        return <Onboarding />;
       case '/signup':
         return <Signup />;
       case '/login':
