@@ -8,15 +8,25 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Onboarding from './pages/Onboarding';
+import Explore from './pages/Explore';
+import StudentProfile from './pages/StudentProfile';
 import { RouterProvider, useRouter } from './context/RouterContext';
 import { AuthProvider } from './context/AuthContext';
+import { StudentProvider } from './context/StudentContext';
 
 function AppContent() {
   const { currentPath } = useRouter();
 
   // Route selector
   const renderPage = () => {
+    // Dynamic profile route
+    if (currentPath.startsWith('/profile/')) {
+      return <StudentProfile />;
+    }
+
     switch (currentPath) {
+      case '/explore':
+        return <Explore />;
       case '/onboarding':
         return <Onboarding />;
       case '/signup':
@@ -53,11 +63,14 @@ function AppContent() {
 function App() {
   return (
     <AuthProvider>
-      <RouterProvider>
-        <AppContent />
-      </RouterProvider>
+      <StudentProvider>
+        <RouterProvider>
+          <AppContent />
+        </RouterProvider>
+      </StudentProvider>
     </AuthProvider>
   );
 }
 
 export default App;
+

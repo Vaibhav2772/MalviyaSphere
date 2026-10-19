@@ -73,9 +73,13 @@ function Navbar() {
         <ul className="navbar-links">
           <li>
             <a 
-              href="#interests" 
+              href="/explore" 
               className="nav-link"
-              onClick={(e) => handleNavClick(e, 'interests')}
+              onClick={(e) => {
+                e.preventDefault();
+                closeMobileMenu();
+                navigate('/explore');
+              }}
             >
               Explore
             </a>
@@ -108,7 +112,13 @@ function Navbar() {
                 type="button"
                 className="navbar-user-chip"
                 title={user?.hasCompletedOnboarding ? 'View Your Sphere Profile' : (user?.college || 'Logged In')}
-                onClick={() => navigate('/onboarding')}
+                onClick={() => {
+                  if (user?.hasCompletedOnboarding) {
+                    navigate('/profile/me');
+                  } else {
+                    navigate('/onboarding');
+                  }
+                }}
                 style={{ cursor: 'pointer' }}
               >
                 <User size={15} className="user-chip-icon" />
@@ -173,9 +183,13 @@ function Navbar() {
         <ul className="mobile-nav-links">
           <li>
             <a 
-              href="#interests" 
+              href="/explore" 
               className="mobile-nav-link"
-              onClick={(e) => handleNavClick(e, 'interests')}
+              onClick={(e) => {
+                e.preventDefault();
+                closeMobileMenu();
+                navigate('/explore');
+              }}
             >
               Explore
             </a>
@@ -206,7 +220,11 @@ function Navbar() {
                 className="mobile-user-profile"
                 onClick={() => {
                   closeMobileMenu();
-                  navigate('/onboarding');
+                  if (user?.hasCompletedOnboarding) {
+                    navigate('/profile/me');
+                  } else {
+                    navigate('/onboarding');
+                  }
                 }}
                 role="button"
                 tabIndex={0}
