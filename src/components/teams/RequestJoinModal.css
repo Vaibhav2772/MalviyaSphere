@@ -1,0 +1,117 @@
+/* RequestJoinModal Styles */
+.req-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+}
+
+.req-modal-card {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border, #e2e8f0);
+  box-shadow: var(--shadow-lg, 0 12px 24px -4px rgba(15, 23, 42, 0.15));
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.req-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  background-color: #f8fafc;
+}
+
+.req-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.req-header-badge {
+  font-size: 1.6rem;
+}
+
+.req-modal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+  margin-bottom: 0.15rem;
+}
+
+.req-modal-subtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #64748b);
+}
+
+.req-modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.req-feedback-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.req-feedback-box.error {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.req-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border, #e2e8f0);
+  margin-top: 1rem;
+}
+
+/* Success State */
+.req-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.req-success-icon {
+  color: #059669;
+  margin-bottom: 1rem;
+}
+
+.req-success-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+  margin-bottom: 0.5rem;
+}
+
+.req-success-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-body, #334155);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  max-width: 440px;
+}

@@ -1,0 +1,108 @@
+/* MessageBubble Styles - Sharp Corners */
+.message-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.message-row.row-outgoing {
+  justify-content: flex-end;
+}
+
+.message-row.row-incoming {
+  justify-content: flex-start;
+}
+
+.msg-avatar {
+  width: 28px;
+  height: 28px;
+  background-color: #334155;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+
+.message-bubble-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 72%;
+}
+
+.row-outgoing .message-bubble-wrapper {
+  align-items: flex-end;
+}
+
+.row-incoming .message-bubble-wrapper {
+  align-items: flex-start;
+}
+
+.message-sender-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-text-muted, #64748b);
+  margin-bottom: 0.25rem;
+  padding-left: 0.2rem;
+}
+
+.message-bubble {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  position: relative;
+  word-break: break-word;
+}
+
+/* Outgoing (current user) - Vibrant Indigo */
+.bubble-outgoing {
+  background-color: var(--color-primary, #4f46e5);
+  color: #ffffff;
+  border: 1px solid var(--color-primary, #4f46e5);
+}
+
+.bubble-outgoing .message-time {
+  display: block;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: right;
+  margin-top: 0.35rem;
+}
+
+/* Incoming (other students) - Clean White / Slate Border */
+.bubble-incoming {
+  background-color: #ffffff;
+  color: var(--color-text-main, #0f172a);
+  border: 1px solid var(--color-border, #e2e8f0);
+  box-shadow: var(--shadow-xs, 0 1px 2px rgba(15, 23, 42, 0.04));
+}
+
+.bubble-incoming .message-time {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--color-text-muted, #64748b);
+  text-align: right;
+  margin-top: 0.35rem;
+}
+
+/* System notice row */
+.message-system-row {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.message-system-bubble {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #64748b);
+  background-color: #f1f5f9;
+  border: 1px solid var(--color-border, #e2e8f0);
+  padding: 0.3rem 0.75rem;
+  text-align: center;
+  max-width: 80%;
+}

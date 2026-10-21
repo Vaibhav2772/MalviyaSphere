@@ -1,0 +1,223 @@
+/* TeamFilters Panel Styles */
+.team-filters-panel {
+  background-color: var(--color-bg-card, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-xs, 0 1px 2px rgba(15, 23, 42, 0.04));
+}
+
+.filters-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.15rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.filters-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.filters-header-icon {
+  color: var(--color-primary, #4f46e5);
+}
+
+.filters-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+}
+
+.btn-clear-filters {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #64748b);
+  padding: 0.2rem 0.45rem;
+  border: 1px solid var(--color-border, #e2e8f0);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition-fast, all 0.2s ease);
+}
+
+.btn-clear-filters:hover {
+  border-color: #ef4444;
+  color: #dc2626;
+  background-color: #fef2f2;
+}
+
+/* Filter Groups */
+.filter-group {
+  margin-bottom: 1.25rem;
+}
+
+.filter-group:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-main, #0f172a);
+  margin-bottom: 0.5rem;
+}
+
+/* Select Wrapper */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.filter-select {
+  width: 100%;
+  appearance: none;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border, #e2e8f0);
+  padding: 0.55rem 2rem 0.55rem 0.75rem;
+  font-size: 0.86rem;
+  color: var(--color-text-main, #0f172a);
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.filter-select:focus {
+  border-color: var(--color-primary, #4f46e5);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted, #64748b);
+  pointer-events: none;
+}
+
+/* Radio Group */
+.filter-status-radios {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  color: var(--color-text-body, #334155);
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-radio-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-custom {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background-color: #ffffff;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.filter-radio-input:checked + .radio-custom {
+  border-color: var(--color-primary, #4f46e5);
+  background-color: var(--color-primary, #4f46e5);
+}
+
+.filter-radio-input:checked + .radio-custom::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+}
+
+.filter-radio-input:focus-visible + .radio-custom {
+  outline: 2px solid var(--color-primary, #4f46e5);
+}
+
+/* Checkbox Label */
+.checkbox-filter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-text-main, #0f172a);
+  cursor: pointer;
+  user-select: none;
+  padding: 0.35rem 0;
+}
+
+.filter-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  color: var(--color-text-muted, #64748b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-checkbox-input:checked ~ .checkbox-custom {
+  color: var(--color-primary, #4f46e5);
+}
+
+/* Skills Chips */
+.skills-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.skill-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  background-color: #f8fafc;
+  border: 1px solid var(--color-border, #e2e8f0);
+  color: var(--color-text-body, #334155);
+  cursor: pointer;
+  transition: var(--transition-fast, all 0.15s ease);
+}
+
+.skill-filter-chip:hover {
+  border-color: #cbd5e1;
+  color: var(--color-text-main, #0f172a);
+}
+
+.skill-filter-chip.active {
+  background-color: #eef2ff;
+  border-color: var(--color-primary, #4f46e5);
+  color: var(--color-primary, #4f46e5);
+}
+
+.chip-remove-icon {
+  color: var(--color-primary, #4f46e5);
+}

@@ -1,0 +1,206 @@
+/* ConversationSidebar Styles */
+.chat-sidebar-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #ffffff;
+  border-right: 1px solid var(--color-border, #e2e8f0);
+  min-width: 320px;
+  max-width: 360px;
+}
+
+.chat-sidebar-header {
+  padding: 1.25rem 1rem 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  background-color: #ffffff;
+}
+
+.sidebar-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.sidebar-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-header-icon {
+  color: var(--color-primary, #4f46e5);
+}
+
+.sidebar-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+}
+
+.btn-toggle-offline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition-fast);
+}
+
+.btn-toggle-offline.online {
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #059669;
+}
+
+.btn-toggle-offline.offline {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.offline-banner-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.65rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.sidebar-search-icon {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--color-text-muted, #64748b);
+  pointer-events: none;
+}
+
+.sidebar-search-input {
+  width: 100%;
+  padding: 0.55rem 2rem 0.55rem 2.25rem;
+  font-size: 0.86rem;
+  color: var(--color-text-main, #0f172a);
+  background-color: #f8fafc;
+  border: 1px solid var(--color-border, #e2e8f0);
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.sidebar-search-input:focus {
+  border-color: var(--color-primary, #4f46e5);
+  background-color: #ffffff;
+}
+
+.btn-clear-sidebar-search {
+  position: absolute;
+  right: 0.65rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted, #64748b);
+}
+
+.sidebar-tabs-nav {
+  display: flex;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.sidebar-tab {
+  flex: 1;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #64748b);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.sidebar-tab:hover {
+  color: var(--color-text-main, #0f172a);
+}
+
+.sidebar-tab.active {
+  color: var(--color-primary, #4f46e5);
+  border-bottom-color: var(--color-primary, #4f46e5);
+}
+
+/* Conversations List Area */
+.sidebar-conversations-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Empty State */
+.sidebar-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 1.25rem;
+}
+
+.empty-inbox-icon {
+  color: var(--color-text-muted, #64748b);
+  margin-bottom: 0.75rem;
+}
+
+.empty-sidebar-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+  margin-bottom: 0.35rem;
+}
+
+.empty-sidebar-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #64748b);
+  line-height: 1.4;
+  margin-bottom: 1.25rem;
+}
+
+.sidebar-empty-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.btn-sidebar-discover {
+  padding: 0.5rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border, #e2e8f0);
+  color: var(--color-text-main, #0f172a);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-sidebar-discover.primary {
+  background-color: var(--color-primary, #4f46e5);
+  border-color: var(--color-primary, #4f46e5);
+  color: #ffffff;
+}
+
+.btn-sidebar-discover:hover {
+  border-color: var(--color-primary, #4f46e5);
+}

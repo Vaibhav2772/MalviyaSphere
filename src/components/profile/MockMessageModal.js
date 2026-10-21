@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
-import { X, Send, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { X, Send, MessageSquare, CheckCircle2, ArrowRight } from 'lucide-react';
+import { useRouter } from '../../context/RouterContext';
+import { useChat } from '../../context/ChatContext';
 import './MockMessageModal.css';
 
 function MockMessageModal({ student, onClose }) {
+  const { navigate } = useRouter();
+  const chatContext = useChat();
   const [messageText, setMessageText] = useState('');
   const [isSent, setIsSent] = useState(false);
 
   const handleSend = (e) => {
     e.preventDefault();
     if (!messageText.trim()) return;
+    try {
+      if (chatContext?.getOrCreateDirectConversation && chatContext?.sendMessage) {
+        const convId = chatContext.getOrCreateDirectConversation(student.id);
+        if (convId) {
+          chatContext.sendMessage(convId, messageText);
+        }
+      }
+    } catch (err) {}
     setIsSent(true);
   };
 
@@ -86,6 +98,30 @@ function MockMessageModal({ student, onClose }) {
                 >
                   <span>Send Message</span>
                   <Send size={15} />
+                </button>
+              </div>
+
+              <div style={{ marginTop: '1rem', paddingTop: '0.875rem', borderTop: '1px solid #e2e8f0', textAlign: 'center' }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    navigate(`/messages?studentId=${student.id}`);
+                  }}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#4f46e5',
+                    fontWeight: 600,
+                    fontSize: '0.85rem',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                  }}
+                >
+                  <span>Open direct conversation in Messages</span>
+                  <ArrowRight size={14} />
                 </button>
               </div>
             </form>

@@ -1,0 +1,235 @@
+/* TeamInviteModal Styles */
+.invite-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+}
+
+.invite-modal-card {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border, #e2e8f0);
+  box-shadow: var(--shadow-lg, 0 12px 24px -4px rgba(15, 23, 42, 0.15));
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.invite-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  background-color: #f8fafc;
+}
+
+.invite-header-title-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.invite-header-icon {
+  color: var(--color-primary, #4f46e5);
+  margin-top: 0.15rem;
+}
+
+.invite-modal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+  margin-bottom: 0.2rem;
+}
+
+.invite-modal-subtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #64748b);
+}
+
+.invite-modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.invite-notice-full {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+  padding: 1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.invite-feedback-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.invite-feedback-box.success {
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.invite-feedback-box.error {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.invite-search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.invite-search-input-wrap .search-icon {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--color-text-muted, #64748b);
+  pointer-events: none;
+}
+
+.invite-search-input-wrap .search-input {
+  padding-left: 2.25rem;
+}
+
+.candidates-list-wrap {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border, #e2e8f0);
+  margin-bottom: 1.15rem;
+  background-color: #f8fafc;
+}
+
+.no-candidates {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #64748b);
+}
+
+.candidate-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.candidate-item:last-child {
+  border-bottom: none;
+}
+
+.candidate-item:hover:not(.pending-disabled) {
+  background-color: #f1f5f9;
+}
+
+.candidate-item.selected {
+  background-color: #eef2ff;
+  border-color: #c7d2fe;
+}
+
+.candidate-item.pending-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.candidate-avatar {
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-primary, #4f46e5);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.candidate-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.candidate-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.candidate-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+}
+
+.candidate-branch {
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #64748b);
+}
+
+.candidate-niches {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.candidate-niche-pill {
+  font-size: 0.7rem;
+  background-color: #f1f5f9;
+  padding: 0.1rem 0.35rem;
+  color: var(--color-text-body, #334155);
+}
+
+.already-invited-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #d97706;
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  padding: 0.2rem 0.5rem;
+}
+
+.selected-check-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-primary, #4f46e5);
+  background-color: #eef2ff;
+  border: 1px solid #c7d2fe;
+  padding: 0.2rem 0.5rem;
+}
+
+.invite-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border, #e2e8f0);
+}
