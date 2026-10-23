@@ -1,15 +1,16 @@
 import React from 'react';
 import './Navbar.css';
 import logo from '../assets/logo.png';
-import { 
-  Home, 
-  Compass, 
-  Users, 
-  MessageSquare, 
-  LogOut, 
+import {
+  Home,
+  Compass,
+  Users,
+  MessageSquare,
+  LogOut,
   ArrowRight,
   LogIn,
-  UserPlus
+  UserPlus,
+  Settings as SettingsIcon
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from '../context/RouterContext';
@@ -26,7 +27,7 @@ function Navbar() {
   const { user, isAuthenticated } = useAuth();
   const { currentPath, navigate } = useRouter();
   const chatContext = useChat();
-  const unreadCount = chatContext?.unreadMessagesCount || 0;
+  const unreadMessagesCount = chatContext?.unreadMessagesCount || 0;
 
   const handleBrandClick = (e) => {
     e.preventDefault();
@@ -47,6 +48,7 @@ function Navbar() {
   const isExploreActive = currentPath.startsWith('/explore');
   const isTeamsActive = currentPath.startsWith('/teams');
   const isMessagesActive = currentPath.startsWith('/messages');
+  const isSettingsActive = currentPath === '/settings';
   const isProfileActive =
     currentPath.startsWith('/profile/me') ||
     currentPath === '/onboarding' ||
@@ -128,8 +130,8 @@ function Navbar() {
                 >
                   <span className="nav-icon-wrap">
                     <MessageSquare size={16} className="nav-item-icon" />
-                    {unreadCount > 0 && (
-                      <span className="nav-unread-dot" aria-label={`${unreadCount} unread messages`} />
+                    {unreadMessagesCount > 0 && (
+                      <span className="nav-unread-dot" aria-label={`${unreadMessagesCount} unread messages`} />
                     )}
                   </span>
                   <span>Messages</span>
@@ -178,6 +180,16 @@ function Navbar() {
                 )}
                 <button
                   type="button"
+                  className={`btn-navbar-settings ${isSettingsActive ? 'is-active' : ''}`}
+                  onClick={handleNavigate('/settings')}
+                  aria-label="Settings"
+                  title="Settings"
+                >
+                  <SettingsIcon size={15} />
+                  <span>Settings</span>
+                </button>
+                <button
+                  type="button"
                   className="btn-navbar-logout"
                   onClick={handleNavigate('/logout')}
                   aria-label="Log Out"
@@ -210,16 +222,28 @@ function Navbar() {
           {/* Mobile Top Header Actions */}
           <div className="navbar-mobile-header-actions">
             {isAuthenticated ? (
-              <button
-                type="button"
-                className="btn-mobile-top-logout"
-                onClick={handleNavigate('/logout')}
-                aria-label="Log Out"
-                title="Log Out"
-              >
-                <LogOut size={15} />
-                <span>Log Out</span>
-              </button>
+              <>
+                <button
+                  type="button"
+                  className={`btn-mobile-top-settings ${isSettingsActive ? 'is-active' : ''}`}
+                  onClick={handleNavigate('/settings')}
+                  aria-label="Settings"
+                  title="Settings"
+                >
+                  <SettingsIcon size={15} />
+                  <span>Settings</span>
+                </button>
+                <button
+                  type="button"
+                  className="btn-mobile-top-logout"
+                  onClick={handleNavigate('/logout')}
+                  aria-label="Log Out"
+                  title="Log Out"
+                >
+                  <LogOut size={15} />
+                  <span>Log Out</span>
+                </button>
+              </>
             ) : (
               <button
                 type="button"
@@ -279,7 +303,7 @@ function Navbar() {
           >
             <span className="mobile-icon-wrap">
               <MessageSquare size={19} className="mobile-item-icon" />
-              {unreadCount > 0 && <span className="mobile-unread-dot" />}
+              {unreadMessagesCount > 0 && <span className="mobile-unread-dot" />}
             </span>
             <span className="mobile-item-label">Messages</span>
           </a>

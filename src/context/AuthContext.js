@@ -124,6 +124,11 @@ export function AuthProvider({ children }) {
 
   // Mark onboarding completed & store profile
   const completeOnboarding = (profileData) => {
+    const mergedProfile = {
+      ...(user?.onboardingProfile || {}),
+      ...profileData,
+    };
+
     const updatedUser = {
       ...(user || {
         name: profileData.fullName || 'Campus Scholar',
@@ -132,8 +137,9 @@ export function AuthProvider({ children }) {
         joinedAt: new Date().toLocaleDateString(),
       }),
       name: profileData.fullName || user?.name || 'Campus Scholar',
+      avatar: profileData.avatar !== undefined ? profileData.avatar : (user?.avatar || null),
       hasCompletedOnboarding: true,
-      onboardingProfile: profileData,
+      onboardingProfile: mergedProfile,
     };
 
     setUser(updatedUser);
@@ -141,7 +147,7 @@ export function AuthProvider({ children }) {
     try {
       localStorage.setItem('malviyasphere_mock_user', JSON.stringify(updatedUser));
       if (updatedUser.email) {
-        localStorage.setItem(`malviyasphere_profile_${updatedUser.email}`, JSON.stringify(profileData));
+        localStorage.setItem(`malviyasphere_profile_${updatedUser.email}`, JSON.stringify(mergedProfile));
       }
       localStorage.removeItem('malviyasphere_onboarding_draft');
     } catch (err) {}

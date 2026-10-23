@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
+import Settings from './pages/Settings';
 import Hero from './components/Hero';
 import InterestSection from './components/InterestSection';
 import Footer from './components/Footer';
@@ -18,6 +19,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { StudentProvider } from './context/StudentContext';
 import { TeamsProvider } from './context/TeamsContext';
 import { ChatProvider } from './context/ChatContext';
+import { SettingsProvider } from './context/SettingsContext';
 
 function AppContent() {
   const { currentPath, navigate } = useRouter();
@@ -27,7 +29,8 @@ function AppContent() {
   const isProtected =
     currentPath.startsWith('/messages') ||
     currentPath === '/profile/me' ||
-    currentPath === '/onboarding';
+    currentPath === '/onboarding' ||
+    currentPath === '/settings';
 
   useEffect(() => {
     if (!isAuthenticated && isProtected) {
@@ -65,6 +68,8 @@ function AppContent() {
         return <Explore />;
       case '/onboarding':
         return <Onboarding />;
+      case '/settings':
+        return <Settings />;
       case '/signup':
         return <Signup />;
       case '/login':
@@ -102,9 +107,11 @@ function App() {
       <StudentProvider>
         <TeamsProvider>
           <ChatProvider>
-            <RouterProvider>
-              <AppContent />
-            </RouterProvider>
+            <SettingsProvider>
+              <RouterProvider>
+                <AppContent />
+              </RouterProvider>
+            </SettingsProvider>
           </ChatProvider>
         </TeamsProvider>
       </StudentProvider>

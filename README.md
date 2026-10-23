@@ -2,7 +2,6 @@
 ### What is MalviyaSphere
 MalviyaSphere is an ongoing project that aims to create a social platform on a college level for people to find other people based on their unique interests/niches, comes with a lot of features currently in development.
 
-
 ## Tech Stack
 - Framework: React.js
 - Styling: CSS
@@ -39,3 +38,9 @@ MalviyaSphere is an ongoing project that aims to create a social platform on a c
 - Messages
     - Messages between two users.
     - Messages with team members.
+- Settings
+    - Profile & Onboarding:
+    - Privacy Preferences: profile visibility, connection requests, and who can message.
+    - Message Settings: Message permissions, and Notification permissions
+    - Account Settings: theme selection, UI density, language, and interactive logout confirmation.
+    - Reset to Defaults: restores default configuration cleanly.
